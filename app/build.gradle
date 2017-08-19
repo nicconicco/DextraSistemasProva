@@ -1,0 +1,82 @@
+//br.com.cng.dextrasistemasprova
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.fabric'
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "br.com.cng.dextrasistemasprova"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    maven {
+        url "http://livetouchdev.com.br:8082/nexus/content/repositories/releases/"
+    }
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile "org.jetbrains.anko:anko-commons:$anko_version"
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    //ViewPagerIndicator
+    compile 'com.github.JakeWharton:ViewPagerIndicator:2.4.1'
+
+    // Google (lib de compatibilidade)
+    compile 'com.android.support:appcompat-v7:25.4.0'
+    compile 'com.android.support:design:25.4.0'
+
+    // CardView: lib para criar cartões (cards)
+    compile 'com.android.support:cardview-v7:25.4.0'
+
+    compile('br.livetouch.android:AndroidUtilsKotlin-Http:1.1.62-20170803-1307@aar') {
+        transitive = true
+    }
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.4@aar') {
+        transitive = true
+    }
+
+    compile 'com.google.android.gms:play-services-auth:9.8.0'
+}
+
+crashlytics {
+    enableNdk true
+    androidNdkOut 'src/main/obj'
+    androidNdkLibsOut 'src/main/libs'
+}
+
