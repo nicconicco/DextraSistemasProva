@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="br.com.cng.dextrasistemasprova">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".DexApplication"
         android:allowBackup="true"
@@ -17,17 +20,21 @@
 
         <meta-data
             android:name="io.fabric.ApiKey"
-            android:value="hashCrashlyticskey"
+            android:value="76532d0cf05c8f50073e3ec921cd740595a2b1d5"
             tools:replace="android:value" />
 
-
-        <activity android:name=".activity.MainActivity"
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activity.DetalheCardapioActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

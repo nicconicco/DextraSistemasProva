@@ -17,7 +17,7 @@ open class DexApplication : BaseApplication() {
     }
 
     override fun getCrashlyticsKey(): String {
-        return "hashCrashlyticskey"
+        return "76532d0cf05c8f50073e3ec921cd740595a2b1d5"
     }
 
     override fun getGoogleAnalyticsTrackingId(): String {
