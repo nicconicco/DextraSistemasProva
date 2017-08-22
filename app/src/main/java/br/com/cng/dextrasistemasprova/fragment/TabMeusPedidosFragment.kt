@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.cng.dextrasistemasprova.HttpService.DexService
 import br.com.cng.dextrasistemasprova.R
-import br.com.cng.dextrasistemasprova.adapter.PromosAdapter
+import br.com.cng.dextrasistemasprova.adapter.MeusPedidosAdapter
 import br.com.cng.dextrasistemasprova.domain.Lanche
 import br.com.livetouch.base.extension.startTask
 import kotlinx.android.synthetic.main.fragment_promos.*
@@ -35,17 +35,17 @@ class TabMeusPedidosFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        taskGetPedidos()
+        taskGetMeusPedidos()
     }
 
-    private fun taskGetPedidos() {
+    private fun taskGetMeusPedidos() {
 
         startTask(execute = {
             cardapio = DexService().getPedidos()
         }, updateView = {
             if (cardapio != null) {
-                recycler.adapter = PromosAdapter(cardapio!!) {
-                    detalheCardapio(it)
+                recycler.adapter = MeusPedidosAdapter(cardapio!!) {
+
                 }
             }
         })

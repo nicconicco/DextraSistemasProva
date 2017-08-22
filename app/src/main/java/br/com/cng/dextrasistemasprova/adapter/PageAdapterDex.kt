@@ -20,7 +20,7 @@ open class PageAdapterDex(private val context: Context, fm: FragmentManager) : F
         when(position) {
             0 -> return TabCardaprioFragment()
             1 -> return TabMeusPedidosFragment()
-            1 -> return TabPromosFragment()
+            2 -> return TabPromosFragment()
         }
 
         return TabCardaprioFragment()

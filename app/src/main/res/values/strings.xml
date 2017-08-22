@@ -8,4 +8,7 @@
     <string name="seus_pedidos">Seus pedidos ate o momento</string>
     <string name="promocoes_validas">Promocoes validas</string>
     <string name="meus_pedidos">MEUS PEDIDOS</string>
+    <string name="confirmar_pedido">CONFIRMAR PEDIDO</string>
+    <string name="clique_no_mais">Clique no mais para adicionar extras ao seu sanduiche</string>
+    <string name="selecione">Selecione os itens q vc deseja adicionar ao seu sanduiche e clique em ok</string>
 </resources>

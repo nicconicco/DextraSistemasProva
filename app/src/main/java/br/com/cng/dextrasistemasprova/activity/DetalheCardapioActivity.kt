@@ -1,7 +1,6 @@
 package br.com.cng.dextrasistemasprova.activity
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import br.com.cng.dextrasistemasprova.HttpService.DexService
 import br.com.cng.dextrasistemasprova.R
 import br.com.cng.dextrasistemasprova.domain.Constant.Constant
@@ -12,6 +11,7 @@ import br.com.livetouch.base.util.LogUtil
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detalhe_cardapio.*
+import org.jetbrains.anko.startActivity
 
 
 /**
@@ -26,13 +26,40 @@ class DetalheCardapioActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalhe_cardapio)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
 
-            fazerPedidos(lanche)
+        setExtrasCardapio()
+        if (supportActionBar != null) {
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            supportActionBar?.setHomeButtonEnabled(true)
         }
 
+        fab.setOnClickListener { view ->
+            addExtrasAoSanduiche()
+        }
+
+        btnConfirmar.setOnClickListener{
+            fazerPedidos(lanche!!)
+        }
+    }
+
+    private fun fazerPedidos(lanche: Lanche){
+        taskFazerPedido(lanche.id!!)
+    }
+
+    private fun taskFazerPedido(id: Int) {
+        var response : Boolean = false
+        startTask(execute = {
+            response = DexService().putPedido(lanche!!.id!!)
+        }, updateView = {
+            if (response) {
+                toast("Pedido realizado com sucesso")
+            } else {
+                toast("Pedido não finalizado, ocorreu um erro")
+            }
+        })
+    }
+
+    private fun setExtrasCardapio() {
         var jsonMyObject: String = ""
         val extras = intent.extras
         if (extras != null) {
@@ -47,16 +74,8 @@ class DetalheCardapioActivity : BaseActivity() {
         }
     }
 
-    private fun fazerPedidos(lanche: Lanche?) {
-        taskFazerPedido(lanche!!.id!!)
-    }
-
-    private fun taskFazerPedido(id: Int) {
-        startTask(execute = {
-            
-        }, updateView = {
-            toast("Pedido realizado com sucesso")
-        })
+    private fun addExtrasAoSanduiche() {
+        startActivity<ExtrasActivity>()
     }
 
     override fun onResume() {
@@ -89,13 +108,6 @@ class DetalheCardapioActivity : BaseActivity() {
     private fun  setIngredientes(lancheDetalhe: Array<Lanche>): String {
 
         var total : String = ""
-//        for((index, element) in lancheDetalhe.withIndex()) {
-//            print("$element at index $index")
-//
-//            element?.let {
-//                total += element.name + ", "
-//            }
-//        }
 
         for (i in 0..lancheDetalhe.size - 1) {
             val b = lancheDetalhe[i]
@@ -107,7 +119,7 @@ class DetalheCardapioActivity : BaseActivity() {
         return total
     }
 
-    private fun  setPreco(lancheDetalhe: Array<Lanche>): String {
+    private fun setPreco(lancheDetalhe: Array<Lanche>): String {
 
         var total : Double = 0.0
         for((index, element) in lancheDetalhe.withIndex()) {
@@ -119,5 +131,9 @@ class DetalheCardapioActivity : BaseActivity() {
         }
 
         return total.toString()
+    }
+
+    override fun onActionBarHomePressed() {
+        finish()
     }
 }

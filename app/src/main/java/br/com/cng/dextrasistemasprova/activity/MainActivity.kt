@@ -30,7 +30,6 @@ class MainActivity : BaseActivity() {
 
         tabLayout.getTabAt(0)!!.setIcon(R.mipmap.rest)
         tabLayout.getTabAt(1)!!.setIcon(R.mipmap.casa)
+        tabLayout.getTabAt(2)!!.setIcon(R.mipmap.casa)
     }
-
-
 }

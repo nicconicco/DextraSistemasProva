@@ -35,6 +35,9 @@
 
         <activity android:name=".activity.DetalheCardapioActivity"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".activity.ExtrasActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

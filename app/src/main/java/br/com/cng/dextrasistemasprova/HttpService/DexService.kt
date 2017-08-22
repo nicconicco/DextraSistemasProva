@@ -87,11 +87,74 @@ class DexService {
     }
 
     fun getPedidos(): Array<Lanche>? {
-        var url = WebServices().getUrlRest() + WebServices().getPromos()
+        var url = WebServices().getUrlRest() + WebServices().getMeusPedidos()
 
         try {
             var http = getHttpHelper()
 
+            http.doGet(url)
+            val jsonResponse = http.getString()
+            val response = DexParser().parseCardapio(jsonResponse)
+
+            return response
+        } catch (var11: Exception) {
+
+            var11.printStackTrace()
+            return null
+        }
+
+        return null
+    }
+
+    fun putPedido(id: Int): Boolean {
+        var url = WebServices().getUrlRest() + WebServices().putPedido() + id
+
+        try {
+            var http = getHttpHelper()
+
+            http.doPut(url,null,"","UTF-8")
+            val jsonResponse = http.getString()
+            val response = DexParser().parseResponse(jsonResponse)
+
+            if (id == response.idSandwich)
+                return true
+        } catch (var11: Exception) {
+
+            var11.printStackTrace()
+            return false
+        }
+
+        return false
+    }
+
+    fun putPedidoWithExtras(id: Int, extras: String): Boolean {
+        var url = WebServices().getUrlRest() + WebServices().putPedido() + id
+
+        try {
+            var http = getHttpHelper()
+
+            val map: MutableMap<String, String> = hashMapOf("extras" to extras)
+            http.doPut(url,map,"","UTF-8")
+
+            val jsonResponse = http.getString()
+            val response = DexParser().parseResponse(jsonResponse)
+
+            if (id == response.idSandwich)
+                return true
+        } catch (var11: Exception) {
+
+            var11.printStackTrace()
+            return false
+        }
+
+        return false
+    }
+
+    fun getTodosOsIngredientes(): Array<Lanche>? {
+        var url = WebServices().getUrlRest() + WebServices().getIngredientes()
+
+        try {
+            var http = getHttpHelper()
             http.doGet(url)
             val jsonResponse = http.getString()
             val response = DexParser().parseCardapio(jsonResponse)

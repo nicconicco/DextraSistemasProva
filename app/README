@@ -1,0 +1,70 @@
+Carlos Nicolau Galves @ 2017
+
+--
+
+ENTREGA:
+
+Levando em consideração o tempo, caso você esteja testando este app,
+
+devido ao servidor ser local peço que mude na classe WebServices
+
+a variavável : URL_REST para seu ip local.
+
+--
+
+Devido ao tempo também notei que o Picasso não esta setando direito as imagens,
+algumas por não estar ok o link e outras por ser um link de redirecionamento.
+
+No caso preciso de mais tempo para pesquisar sobre isso e uma possível solução,
+mas ao meu ver nada grave que vá ser de fato avaliador no código.
+
+
+--
+
+Entrega Difícil
+
+Implementação dos requisitos;
+
+Acredito que estão todos os requisitos implementados
+ou uma demonstração do que se espera
+
+Relatório simples com funcionalidades a mais a serem implementadas no futuro;
+
+- Funcionalidades para o futuro:
+
+- Login com autenticação do usuário com um token.
+- Serviço de status do pedido ( Caso tenha sido de fato aceito )
+- Promoções baseadas em localidades próximas a você
+- Implementar de maneira correta os serviços com POST e não PUT...
+
+Relatório simples de justificativas para escolha do design de código,
+ dependências e melhorias no Servidor para melhor uso de dados no Aplicativo;
+
+- Escolhi esse design pois é o que tenho usado com maior frequência nos projetos.
+- Definindo onde estão as activitys,fragments,domain, service e as classes úteis
+- No servidor poderiamos usar post ao invés de passar na url os ids dos produtos
+- Talvez aumentar ou hierarquizar mais sobre os produtos / Comida japonesa/ Italiana/ Etc
+
+
+Os testes automatizados devem ser executados por algum modelo de integração contínua;
+
+- Eu não entendi muito bem o que vocês querem com isso, mas
+devido ao tempo poderia com maior tempo procurar colocar o projeto no jenkins para
+avaliar sempre que é feito um build se ele compilou e ter um maior controle de versão.
+
+- O própio github foi usado com branchs de master/developer para desenvolvimento de código
+na developer e após validada a versão final, subir na master.
+
+- Onde trabalho usamos o crashlytics e fabric para termos um controle do código e onde ele
+pode falhar nos diferentes devices para irmos corrigindo possíveis bugs.
+
+- Implementei no androidTest alguns os testCase dos serviços para exemplo..
+
+Implementação de Cache
+
+- Ao que entendi com isto foi a não necessidade de busca de devidos serviços.
+- No futuro poderia implementar o banco de dados local caso fosse do interesse
+do usuário ter um controle dos pedidos realizados com sucesso.
+- Ou poderia salvar no application do código para ter esses dados também caso
+a activity seja morta.
+

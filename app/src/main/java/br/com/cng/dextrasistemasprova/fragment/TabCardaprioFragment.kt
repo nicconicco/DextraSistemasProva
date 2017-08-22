@@ -1,5 +1,6 @@
 package br.com.cng.dextrasistemasprova.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -8,9 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import br.com.cng.dextrasistemasprova.HttpService.DexService
 import br.com.cng.dextrasistemasprova.R
+import br.com.cng.dextrasistemasprova.activity.DetalheCardapioActivity
 import br.com.cng.dextrasistemasprova.adapter.CardapioAdapter
+import br.com.cng.dextrasistemasprova.domain.Constant.Constant
 import br.com.cng.dextrasistemasprova.domain.Lanche
 import br.com.livetouch.base.extension.startTask
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_cardapio.*
 
 
@@ -57,6 +61,14 @@ open class TabCardaprioFragment : BaseFragment() {
                 }
             }
         })
+    }
+
+    fun detalheCardapio(it: Lanche) {
+        val bundle = Bundle()
+        bundle.putString(Constant.LANCHE, Gson().toJson(it))
+        val it = Intent(activity, DetalheCardapioActivity::class.java)
+        it.putExtras(bundle)
+        activity.startActivity(it, bundle)
     }
 }
 

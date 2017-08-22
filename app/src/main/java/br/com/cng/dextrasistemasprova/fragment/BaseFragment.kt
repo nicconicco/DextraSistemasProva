@@ -14,11 +14,4 @@ import com.google.gson.Gson
 
 
 open class BaseFragment : BaseFragment() {
-    public fun detalheCardapio(it: Lanche) {
-        val bundle = Bundle()
-        bundle.putString(Constant.LANCHE, Gson().toJson(it))
-        val it = Intent(activity, DetalheCardapioActivity::class.java)
-        it.putExtras(bundle)
-        activity.startActivity(it, bundle)
-    }
 }
