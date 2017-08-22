@@ -6,7 +6,7 @@ import br.com.cng.dextrasistemasprova.R
 import br.com.cng.dextrasistemasprova.adapter.ExtrasAdapter
 import br.com.cng.dextrasistemasprova.domain.Lanche
 import br.com.livetouch.base.extension.startTask
-import kotlinx.android.synthetic.main.fragment_cardapio.*
+import kotlinx.android.synthetic.main.activity_extras.*
 
 /**
  * Created by nicolaugalves on 21/08/17.
@@ -49,5 +49,9 @@ class ExtrasActivity : BaseActivity() {
                 }
             }
         })
+    }
+
+    override fun onActionBarHomePressed() {
+        finish()
     }
 }
