@@ -7,7 +7,7 @@ import br.com.cng.dextrasistemasprova.domain.Constant.Constant
  */
 
 class WebServices {
-    private val URL_REST = "http://10.0.64.22:8081"
+    private val URL_REST = "http://10.0.64.22:8080"
     private val URL_LANCHES_PROD = "/api/lanche"
     private val URL_LANCHES_HOMOLOG = "/api/lanche"
 
