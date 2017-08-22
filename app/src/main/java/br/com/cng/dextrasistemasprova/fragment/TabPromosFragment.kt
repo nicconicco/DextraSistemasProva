@@ -9,22 +9,22 @@ import android.view.ViewGroup
 import br.com.cng.dextrasistemasprova.HttpService.DexService
 import br.com.cng.dextrasistemasprova.R
 import br.com.cng.dextrasistemasprova.adapter.CardapioAdapter
+import br.com.cng.dextrasistemasprova.adapter.PromosAdapter
 import br.com.cng.dextrasistemasprova.domain.Lanche
 import br.com.livetouch.base.extension.startTask
-import kotlinx.android.synthetic.main.fragment_cardapio.*
-
+import kotlinx.android.synthetic.main.fragment_promos.*
 
 /**
- * Created by nicolaugalves on 19/08/17.
+ * Created by nicolaugalves on 21/08/17.
  */
 
 
-open class TabCardaprioFragment : BaseFragment() {
+class TabPromosFragment : BaseFragment() {
 
     var cardapio : Array<Lanche>? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater?.inflate(R.layout.fragment_cardapio, container, false)
+        val view = inflater?.inflate(R.layout.fragment_promos, container, false)
         return view
     }
 
@@ -38,7 +38,7 @@ open class TabCardaprioFragment : BaseFragment() {
         super.onResume()
 
         if (cardapio == null) {
-            taskGetCardapio()
+            taskGetPromos()
         } else {
             recycler.adapter = CardapioAdapter(cardapio!!) {
                 detalheCardapio(it)
@@ -46,18 +46,16 @@ open class TabCardaprioFragment : BaseFragment() {
         }
     }
 
-    private fun taskGetCardapio() {
+    private fun taskGetPromos() {
 
         startTask(execute = {
-            cardapio = DexService().getCarpadio()
+            cardapio = DexService().getPromocoes()
         }, updateView = {
             if (cardapio != null) {
-                recycler.adapter = CardapioAdapter(cardapio!!) {
+                recycler.adapter = PromosAdapter(cardapio!!) {
                     detalheCardapio(it)
                 }
             }
         })
     }
 }
-
-

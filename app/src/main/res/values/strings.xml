@@ -3,4 +3,9 @@
     <string name="cardapio">CARDAPIO</string>
     <string name="seu_pedido">SEU PEDIDO</string>
     <string name="lorem_ipsum">LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM LOREM IPSUM</string>
+    <string name="detalhe">Clique em um lanche para maiores detalhes</string>
+    <string name="promocoes">PROMOCOES</string>
+    <string name="seus_pedidos">Seus pedidos ate o momento</string>
+    <string name="promocoes_validas">Promocoes validas</string>
+    <string name="meus_pedidos">MEUS PEDIDOS</string>
 </resources>

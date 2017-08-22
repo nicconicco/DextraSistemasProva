@@ -8,8 +8,10 @@ import java.io.Serializable
 
 
 class Lanche : Serializable {
-    var id : Int? = null
-    var name: String? = null
+    var id : Int? = 0
+    var name: String? = ""
+    var price: Double? = 0.0
+    var description: String? = ""
     var ingredients : MutableCollection<Int>? = null
-    var image : String? = null
+    var image : String? = ""
 }

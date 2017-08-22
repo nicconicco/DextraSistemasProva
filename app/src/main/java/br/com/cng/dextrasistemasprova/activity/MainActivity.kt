@@ -20,18 +20,14 @@ class MainActivity : BaseActivity() {
 
         val toolbar = findViewById(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = PageAdapterDex(this, supportFragmentManager)
 
-        // Set up the ViewPager with the sections adapter.
+        mSectionsPagerAdapter = PageAdapterDex(this, supportFragmentManager)
         mViewPager = findViewById(R.id.container) as ViewPager?
         mViewPager!!.adapter = mSectionsPagerAdapter
 
         val tabLayout = findViewById(R.id.tabs) as TabLayout
         tabLayout.setupWithViewPager(mViewPager)
 
-        // set icons
         tabLayout.getTabAt(0)!!.setIcon(R.mipmap.rest)
         tabLayout.getTabAt(1)!!.setIcon(R.mipmap.casa)
     }
