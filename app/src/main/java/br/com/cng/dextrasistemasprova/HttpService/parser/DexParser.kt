@@ -20,4 +20,9 @@ class DexParser {
         return rr
     }
 
+    fun  parseResponseList(jsonResponse: String): Array<ResponseRestaurante>? {
+        val rrList = Gson().fromJson(jsonResponse, Array<ResponseRestaurante>::class.java)
+        return rrList
+    }
+
 }

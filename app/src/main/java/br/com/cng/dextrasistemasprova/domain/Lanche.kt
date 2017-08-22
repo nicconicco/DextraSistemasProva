@@ -12,6 +12,6 @@ class Lanche : Serializable {
     var name: String? = ""
     var price: Double? = 0.0
     var description: String? = ""
-    var ingredients : MutableCollection<Int>? = null
+    var ingredients : IntArray? = null
     var image : String? = ""
 }

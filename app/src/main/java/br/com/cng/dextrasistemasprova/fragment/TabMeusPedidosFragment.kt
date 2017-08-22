@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import br.com.cng.dextrasistemasprova.HttpService.DexService
 import br.com.cng.dextrasistemasprova.R
 import br.com.cng.dextrasistemasprova.adapter.MeusPedidosAdapter
-import br.com.cng.dextrasistemasprova.domain.Lanche
+import br.com.cng.dextrasistemasprova.domain.ResponseRestaurante
 import br.com.livetouch.base.extension.startTask
 import kotlinx.android.synthetic.main.fragment_promos.*
 
@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_promos.*
 
 class TabMeusPedidosFragment : BaseFragment() {
 
-    var cardapio : Array<Lanche>? = null
+    var response : Array<ResponseRestaurante>? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater?.inflate(R.layout.fragment_meus_pedidos, container, false)
@@ -41,10 +41,10 @@ class TabMeusPedidosFragment : BaseFragment() {
     private fun taskGetMeusPedidos() {
 
         startTask(execute = {
-            cardapio = DexService().getPedidos()
+            response = DexService().getPedidos()
         }, updateView = {
-            if (cardapio != null) {
-                recycler.adapter = MeusPedidosAdapter(cardapio!!) {
+            if (response != null) {
+                recycler.adapter = MeusPedidosAdapter(response!!) {
 
                 }
             }

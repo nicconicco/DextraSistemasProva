@@ -2,6 +2,7 @@ package br.com.cng.dextrasistemasprova.HttpService
 
 import br.com.cng.dextrasistemasprova.HttpService.parser.DexParser
 import br.com.cng.dextrasistemasprova.domain.Lanche
+import br.com.cng.dextrasistemasprova.domain.ResponseRestaurante
 import br.com.cng.dextrasistemasprova.domain.ws.WebServices
 import br.com.livetouch.http.HttpHelper
 
@@ -86,7 +87,7 @@ class DexService {
         return null
     }
 
-    fun getPedidos(): Array<Lanche>? {
+    fun getPedidos(): Array<ResponseRestaurante>? {
         var url = WebServices().getUrlRest() + WebServices().getMeusPedidos()
 
         try {
@@ -94,9 +95,9 @@ class DexService {
 
             http.doGet(url)
             val jsonResponse = http.getString()
-            val response = DexParser().parseCardapio(jsonResponse)
+            val response = DexParser().parseResponseList(jsonResponse)
 
-            return response
+            return response!!
         } catch (var11: Exception) {
 
             var11.printStackTrace()
